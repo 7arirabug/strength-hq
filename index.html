@@ -1,0 +1,345 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#000000"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Strength HQ"><meta name="description" content="Strength HQ Block 1 - minimalist six-week strength and grip training diary."><title>Strength HQ · Block 1</title><style>
+:root{--bg:#000000;--card:#121212;--ink:#ffffff;--muted:#c8c8c8;--stroke:#383838;--green:#d3ffd8;--soft:#202522;--red:#ff9c9c;--black:#171717;--field:#171717;--nav:#050505;--soft-ink:#eeeeee;--bar-bg:#363636;--shade:rgba(0,0,0,.92);color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#000;color:#fff;font:16px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+button,input,select,textarea{font:inherit;font-variant-numeric:tabular-nums}
+button{cursor:pointer;touch-action:manipulation}
+button:disabled{opacity:.5;cursor:default}
+input,select,textarea{color:#fff;background:var(--field);border:1px solid #626262;border-radius:11px;padding:13px 12px;min-width:0;width:100%;font-size:17px;min-height:48px}
+input::placeholder,textarea::placeholder{color:#b6b6b6}
+input:focus-visible,select:focus-visible,button:focus-visible{outline:2px solid #d3ffd8;outline-offset:2px}
+[hidden]{display:none!important}
+.shell{max-width:850px;margin:auto;padding:0 16px calc(111px + env(safe-area-inset-bottom))}
+header{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--stroke);padding:20px 0 17px;gap:9px}
+.logo{display:flex;align-items:center;gap:10px}.mark{width:37px;height:37px;border-radius:10px;display:grid;place-items:center;background:#fff;color:#050505;font-weight:900}
+.brand{font-size:19px;font-weight:860;letter-spacing:-.045em}.subbrand{color:var(--muted);font-size:11px;letter-spacing:.035em}
+.pill{border:1px solid var(--stroke);border-radius:999px;background:#171717;color:#fff;font-size:11px;font-weight:750;padding:7px 10px;white-space:nowrap}
+.kicker{font-size:11px;font-weight:850;letter-spacing:.11em;color:var(--green);text-transform:uppercase}
+h1{font-size:clamp(30px,7vw,40px);font-weight:840;letter-spacing:-.055em;line-height:1.14;margin:6px 0 8px}h2{font-size:24px;letter-spacing:-.045em;line-height:1.15;margin:5px 0}h3{font-size:15px;margin:0}
+.sub,.muted{color:var(--muted)}.sub{font-size:14px}.overview{padding:24px 0 19px}.heading{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+.row{display:flex;align-items:center;gap:10px}.spread{justify-content:space-between}.tiny{font-size:12px}.strong{font-weight:780}
+.sectionlabel{font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:850;color:#e3e3e3;margin:25px 0 11px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.card,.metric,.recordbox{border:1px solid var(--stroke);background:var(--card);border-radius:14px;padding:16px}
+.soft,.notice{background:#181a18;border:1px solid #343b35;border-radius:12px;padding:12px 14px;color:#f0f0f0;font-size:13px;line-height:1.55}
+.notice{margin:16px 0}.soft{margin:12px 0}
+.weekgrid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}.weekbtn{background:#161616;border:1px solid #474747;border-radius:11px;min-height:49px;font-size:14px;font-weight:800;color:#dedede}
+.weekbtn.active{background:#f4f4f4;color:#000;border-color:#f4f4f4}
+.daygrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}.daybtn{background:#151515;border:1px solid #434343;border-radius:11px;min-height:72px;padding:9px 3px;color:#fff}
+.daybtn b{display:block;font-size:15px}.daybtn span{display:block;color:#c8c8c8;font-size:10px;line-height:1.25;margin-top:4px;font-weight:550}
+.daybtn.active{background:#222923;border-color:#d3ffd8}.daybtn.active b{color:#d3ffd8}
+.ghost{border:0;background:transparent;color:#d3ffd8;font-weight:760;padding:7px 0;font-size:13px}
+.outline,.primary{border-radius:11px;padding:12px 15px;font-size:14px;font-weight:800;min-height:45px}
+.outline{border:1px solid #666;background:#181818;color:#fff}.primary{background:#f7f7f7;border:1px solid #f7f7f7;color:#000}
+.danger,.remove{color:var(--red)}
+.group{margin-top:23px}.group-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:9px}.group-head h3{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#dedede}
+.exercise-list{border:1px solid var(--stroke);border-radius:14px;overflow:hidden;background:#121212}
+.exercise{display:flex;align-items:center;gap:10px;min-height:78px;padding:14px 12px}
+.exercise+.exercise{border-top:1px solid #313131}.exercise.is-complete{background:#162017}
+.exmain{flex:1;min-width:0}.exname{font-size:15px;font-weight:780;line-height:1.35;color:#fff}
+.exhint{color:#ccc;font-size:12px;margin-top:5px;line-height:1.4}
+.dosage{flex:0 0 auto;text-align:right;min-width:90px;max-width:140px}
+.dosage b{font-size:15px;font-weight:850;display:block;line-height:1.25;white-space:normal;color:#fff}
+.dosage small{display:block;color:#c8f5cf;font-size:12px;font-weight:760;margin-top:3px;line-height:1.3}
+.dosage .logged{color:#dedede;font-size:11px;font-weight:650}
+.plus{flex:none;min-width:44px;width:44px;height:44px;border-radius:11px;background:#eaeaea;border:1px solid #fff;color:#111;font-size:25px;line-height:1;font-weight:600}
+.opt{display:inline-block;font-size:10px;border:1px solid #737373;padding:2px 5px;border-radius:6px;color:#ececec;font-weight:750;letter-spacing:.02em;vertical-align:middle}
+.workout-progress{display:grid;grid-template-columns:1fr auto;gap:8px 12px;margin:17px 0 7px;padding:12px 14px;border:1px solid var(--stroke);border-radius:12px;background:#121212;color:#dedede;font-size:13px;font-weight:720}
+.workout-progress strong{font-size:15px;color:#fff}.bar{height:7px;background:#353535;border-radius:10px;overflow:hidden;grid-column:1/-1}.bar span{display:block;height:100%;background:#d3ffd8}
+.tabs{position:fixed;z-index:10;bottom:0;left:0;right:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;padding:7px max(12px,calc((100vw - 740px)/2)) calc(7px + env(safe-area-inset-bottom));background:#050505;border-top:1px solid #373737}
+.tabs button{border:0;background:transparent;color:#d0d0d0;border-radius:12px;display:grid;place-items:center;gap:3px;padding:8px 2px;font-size:12px;font-weight:780;min-height:53px}
+.tabs button.active{background:#f0f0f0;color:#000}.tabs svg{height:19px;width:19px}
+.panel{display:none}.panel.active{display:block}
+.smallnote{font-size:12px;color:#cbcbcb;line-height:1.5;margin:10px 0}
+.progressnav{display:flex;flex-wrap:wrap;gap:7px;margin:17px 0}.progressnav button{border:1px solid #505050;background:#181818;color:#eee;padding:10px 13px;border-radius:10px;font-size:13px;font-weight:750;min-height:43px}
+.progressnav button.active{background:#fff;border-color:#fff;color:#000}
+.linegraph{width:100%;display:block;margin-top:8px;overflow:visible}
+.recordgrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}
+.recordbox{padding:11px 3px;text-align:center;border-radius:10px}.recordbox small{display:block;font-size:11px;color:#ddd}.recordbox b{display:block;font-size:14px;margin-top:5px;white-space:nowrap;font-weight:850}.pr-value{font-size:24px;font-weight:900;color:#fff}
+.entry{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 0;border-bottom:1px solid #353535;font-size:13px}
+.entry b{font-size:13px;color:#fff}.entry small{color:#ddd;display:block;margin-top:4px;line-height:1.55}
+.entry-right{text-align:right;flex:none;max-width:46%}.remove{border:0;background:transparent;font-size:12px;text-decoration:underline;padding:6px 0}
+.form{display:grid;gap:12px}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.field{min-width:0}.field label{display:block;color:#e2e2e2;font-size:12px;font-weight:800;margin-bottom:6px}.field.wide{grid-column:1/-1}.field textarea{resize:vertical;font-size:16px;min-height:70px}
+.buttonrow{display:flex;gap:9px;flex-wrap:wrap;align-items:center}.stack{display:grid;gap:12px}
+details{border-bottom:1px solid #3d3d3d;padding:2px 0}details summary{list-style:none;cursor:pointer;padding:15px 2px;font-size:15px;color:#fff;font-weight:790}details summary::-webkit-details-marker{display:none}details summary:after{content:'+';float:right;color:#fff}details[open] summary:after{content:'−'}.detailbody{font-size:13px;color:#d7d7d7;line-height:1.6;padding-bottom:15px}.detailbody strong{color:#fff}.detailbody ul{padding-left:19px}.detailbody li{margin-bottom:6px}
+.summaryline{border:1px solid #444;padding:11px 12px;border-radius:11px;background:#171717;margin:10px 0;font-size:13px}.summaryline b{display:block}.summaryline small{color:#ccc}.foot{font-size:12px;color:#bbb;padding:23px 0 0;line-height:1.5}
+.screen{position:fixed;inset:0;background:rgba(0,0,0,.91);z-index:20;display:none;align-items:flex-end;justify-content:center}.screen.open{display:flex}.modal{width:min(520px,100%);max-height:95dvh;overflow:auto;background:#121212;border:1px solid #525252;border-radius:20px 20px 0 0;padding:20px 17px calc(25px + env(safe-area-inset-bottom))}
+.modalhead{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:15px;gap:12px}.modalhead h2{font-size:23px;margin:4px 0;color:#fff}.x{flex:none;border:1px solid #666;background:#252525;color:#fff;width:44px;height:44px;border-radius:11px;font-size:24px}
+.toast{position:fixed;z-index:30;left:50%;bottom:calc(95px + env(safe-area-inset-bottom));transform:translateX(-50%);background:#f2f2f2;color:#000;padding:11px 15px;border-radius:10px;display:none;font-size:13px;white-space:nowrap}
+@media(min-width:720px){.shell{padding-bottom:120px}.screen{align-items:center;padding:22px}.modal{border-radius:18px;padding:23px}.tabs{left:50%;right:auto;transform:translateX(-50%);width:min(740px,100%);border:1px solid #444;border-bottom:0;border-radius:18px 18px 0 0}}
+@media(max-width:430px){.shell{padding:0 12px calc(109px + env(safe-area-inset-bottom))}.exercise{gap:7px;padding:13px 10px;min-height:83px}.exname{font-size:14px}.exhint{font-size:11.5px}.dosage{min-width:78px;max-width:118px}.dosage b{font-size:13.5px}.plus{width:42px;min-width:42px;height:44px}.daybtn span{font-size:9.5px}.recordgrid{gap:4px}.recordbox b{font-size:12px}.entry-right{max-width:44%}}
+
+/* Gym + home share their training date, but record completion independently. */
+.session-block{margin-top:24px}
+.session-titlebar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
+.session-title{font-size:19px;letter-spacing:-.035em;font-weight:850;color:#fff;margin:0}
+.session-sub{font-size:12px;color:#d0d0d0;margin-top:2px}
+.session-complete{background:#191919;border:1px solid #626262;border-radius:10px;color:#fff;padding:9px 11px;font-size:12px;font-weight:800;min-height:44px;white-space:nowrap}
+.session-complete[aria-pressed="true"]{background:#d3ffd8;border-color:#d3ffd8;color:#111}
+.session-block .group{margin-top:14px}
+.session-block .group-head{margin-bottom:7px}.session-block[data-location="home"] .group-head{display:none}
+.session-block .workout-progress{margin:7px 0 10px}
+.session-block .workout-progress strong{font-variant-numeric:tabular-nums}
+.session-block + .session-block{border-top:1px solid #3b3b3b;padding-top:21px;margin-top:25px}
+.session-block.is-complete .session-title::after{content:" ✓";color:#d3ffd8;font-weight:850}
+.session-block .exercise-list{border-radius:12px}
+@media(max-width:430px){.session-title{font-size:18px}.session-complete{padding:9px 10px;font-size:11.5px}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header><div class="logo"><div class="mark">H</div><div><div class="brand">STRENGTH HQ</div><div class="subbrand">HYBRID STRENGTH / GRIP</div></div></div><span class="pill" id="blockLabel">BLOCK 1 · 6 WEEKS</span></header>
+<section id="train" class="panel active" aria-label="Train">
+  <div class="overview"><div class="kicker" id="trainDate">NOV 16 – DEC 27, 2026</div><h1>Today's training.</h1><p class="sub" style="margin:0">Your program, your numbers. Log each set as you go.</p></div>
+  <div class="sectionlabel">Training week <button type="button" class="ghost" id="jumpToday">Jump to today</button></div><div id="trainWeeks" class="weekgrid"></div><div id="trainPhase" class="smallnote"></div>
+  <div class="sectionlabel">Training day</div><div id="trainDays" class="daygrid"></div><div id="trainWorkout"></div>
+</section>
+<section id="progress" class="panel" aria-label="Progress">
+  <div class="overview"><div class="kicker">Your performance</div><h1>Progress.</h1><p class="sub" style="margin:0">Comparable performance, not just the heaviest weight.</p></div>
+  <div id="progressChoices" class="progressnav"></div><div id="progressDetails"></div>
+  <div class="sectionlabel">Training history</div><div class="field"><select id="historyFilter" aria-label="Filter history"><option value="all">All exercises</option></select></div><div id="history" style="margin-top:8px"></div><button class="outline" id="moreHistory" type="button" style="margin-top:12px" hidden>Show more</button>
+</section>
+<section id="program" class="panel" aria-label="Program">
+  <div class="overview"><div class="kicker">16 Nov – 27 Dec 2026</div><h1>Block 1.</h1><p class="sub" style="margin:0">Six-week strength block · progressive grip training.</p></div>
+  <div class="sectionlabel">Select week</div><div id="programWeeks" class="weekgrid"></div><div id="programPhase" class="notice"></div>
+  <div class="sectionlabel">Weekly schedule</div><div class="card" id="scheduleOverview"></div>
+  <div class="sectionlabel">Full week prescriptions</div><div id="programExercises"></div>
+  <div class="sectionlabel">Rules & progression</div>
+  <details><summary>RPE and rest times</summary><div class="detailbody"><p><strong>RPE 6</strong> ≈ 4 reps left · <strong>7</strong> ≈ 3 · <strong>8</strong> ≈ 2 · <strong>9</strong> ≈ 1 · <strong>9.5</strong> ≈ 0–1. RPE 10 is maximal effort. Accessories stay at RPE 7 unless otherwise shown.</p><p>Main top sets: 3–5 min rest. Weighted dip/pull-up volume: 3–4 min. Squats: 3–5 min. Other compound: 2–3 min. Isolation: 60–120 sec. Intensive grip: 1–3 min. Light grip: 45–90 sec.</p><p>Warm up with 5–10 minutes of movement and 2–4 increasingly loaded sets before your main lifts.</p></div></details>
+  <details><summary>Grip progression & safe intensity</summary><div class="detailbody"><p><strong>Weeks 1–2:</strong> stable, repeatable grip loads. <strong>Week 3:</strong> progress when recovery allows. <strong>Week 4:</strong> strongest week; selective near-limit efforts only with good recovery. <strong>Week 5:</strong> about half the grip volume, no near failure. <strong>Week 6:</strong> easy grip or rest.</p><p><strong>At the gym:</strong> Tuesday grippers, weighted hangs, pinches and optional farmer’s walks; Thursday finger-flexion curls; Saturday heavy grippers, pinches and finger-flexion curls. <strong>At home:</strong> Monday/Thursday wrist extensions, Tuesday/Saturday PVC pipe cupping. All use the same daily training date.</p><p>Hangs and pinches: build 15–25 seconds before adding resistance. Stop safely before slipping or technique breakdown. No tennis-ball squeezes or mandatory Saturday weighted hangs.</p></div></details>
+  <details><summary>Main-lift progression and calibration</summary><div class="detailbody"><p>Only add load when technique, prescribed reps and RPE allow it. Pull-ups/dips typically increase 1–2.5 kg at a time. Monitor bodyweight for weighted moves.</p><p><strong>First Tuesday calibration:</strong> try +17.5 kg × 5 after warming up and adjust to RPE 7; this is an assessment, not a mandatory target. Dip and squat loads are established in week 1.</p><p>Week 5 tests controlled heavy doubles/triples without forced reps. Week 6 reduces volume and intensity. Track work at equivalent repetitions and effort.</p></div></details>
+  <details><summary>Recovery priorities</summary><div class="detailbody"><p>Protect weighted pull-ups, dips and squats first. First skip optional Friday climbing and Tuesday farmer’s walks, then reduce Saturday gripper / pinch volume and nonessential accessories. Reduce Saturday pulling only if necessary.</p><p>Finger, elbow or shoulder pain and declining performance warrant load adjustments. Maintain adequate sleep, hydration and approximately 1.6–2.2 g protein/kg/day.</p></div></details>
+  <div class="foot">Strength first. Balanced development second. Skills later. No dedicated calisthenics skills in Block 1.</div>
+</section>
+<section id="settings" class="panel" aria-label="Settings">
+  <div class="overview"><div class="kicker">Make it yours</div><h1>Settings.</h1><p class="sub" style="margin:0">Change targets without changing or deleting past results.</p></div><div class="sectionlabel">General</div><div class="card"><div class="formgrid"><div class="field"><label for="bodyweight">Bodyweight (kg)</label><input id="bodyweight" type="number" min="25" max="300" step="0.1" inputmode="decimal" placeholder="Optional"></div><div class="field"><label for="restDay">Open app on</label><select id="restDay"><option value="next">Next training day</option><option value="calendar">Actual weekday</option></select></div></div><div style="margin-top:10px"><button class="primary" type="button" id="saveGeneral">Save preferences</button></div></div>
+  <div class="sectionlabel">Pull-day row variation</div><div class="card"><div class="field"><label for="rowVariant">Use for all 6 weeks</label><select id="rowVariant"><option value="chest">Chest-supported row</option><option value="dumbbell">One-arm dumbbell row (per arm)</option></select></div></div>
+  <div class="sectionlabel">Edit training targets</div><div class="card stack"><div class="formgrid"><div class="field"><label for="editWeek">Week</label><select id="editWeek"></select></div><div class="field"><label for="editDay">Day</label><select id="editDay"></select></div><div class="field wide"><label for="editExercise">Exercise</label><select id="editExercise"></select></div><div class="field wide"><label for="editName">Exercise name</label><input id="editName" maxlength="90"></div><div class="field"><label for="editSets">Sets (e.g. 3 or 2–3)</label><input id="editSets" maxlength="20"></div><div class="field"><label for="editReps">Reps or seconds</label><input id="editReps" maxlength="30"></div><div class="field"><label for="editRpe">Target RPE / effort</label><input id="editRpe" maxlength="45"></div><div class="field"><label for="editWeight">Target load (kg, optional)</label><input id="editWeight" type="number" step="0.5" inputmode="decimal" placeholder="Not set"></div></div><div class="row spread"><label class="row tiny"><input id="editHidden" type="checkbox" style="width:16px;height:16px"> Hide this exercise this week</label><button id="restoreTarget" type="button" class="ghost">Restore default</button></div><button id="saveTarget" type="button" class="primary">Save exercise changes</button><div class="smallnote">Changes apply to the selected week/day only. Historical logs are never modified.</div></div>
+  <div class="sectionlabel">Custom exercise</div><div class="card stack"><div class="formgrid"><div class="field wide"><label for="customName">Name</label><input id="customName" maxlength="90" placeholder="Exercise name"></div><div class="field"><label for="customDay">Day</label><select id="customDay"></select></div><div class="field"><label for="customLocation">Training location</label><select id="customLocation"><option value="gym">Gym Workout</option><option value="home">Home Finisher</option></select></div><div class="field"><label for="customGroup">Section</label><select id="customGroup"><option value="support">Accessories</option><option value="main">Main lifts</option><option value="grip">Grip</option></select></div><div class="field"><label for="customSets">Sets</label><input id="customSets" value="2" maxlength="20"></div><div class="field"><label for="customReps">Reps / seconds</label><input id="customReps" value="10–12" maxlength="30"></div><div class="field"><label for="customRpe">RPE / effort</label><input id="customRpe" value="7" maxlength="30"></div><div class="field"><label for="customUnit">Logging unit</label><select id="customUnit"><option value="reps">Repetitions</option><option value="sec">Seconds</option></select></div></div><button class="primary" type="button" id="addCustom">Add to all six weeks</button><div id="customList"></div></div>
+  <div class="sectionlabel">Data & backups</div><div class="card stack"><p class="sub" style="margin:0">Saved on this device in this browser. Earlier Strength HQ logs remain readable. Export before clearing site data or switching browsers.</p><div class="buttonrow"><button class="primary" id="exportData" type="button">Export backup</button><label class="outline" for="importFile" style="cursor:pointer">Restore backup</label><input id="importFile" type="file" accept=".json,application/json" hidden></div><span class="smallnote">Restoring merges records by ID instead of replacing your existing workout history.</span></div>
+</section>
+</div>
+<nav class="tabs" aria-label="Main navigation">
+ <button type="button" data-tab="train" class="active" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m6.5 6.5-3 3m14-3 3 3M3 12l3 3m15-3-3 3M6 9l3-3 9 9-3 3z"/></svg>Train</button>
+ <button type="button" data-tab="progress"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20V4m0 16h18M6 15l4-4 3 2 6-7"/></svg>Progress</button>
+ <button type="button" data-tab="program"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18"/></svg>Program</button>
+ <button type="button" data-tab="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 17h16M9 4v6m6 4v6"/></svg>Settings</button>
+</nav>
+<div id="modalBackdrop" class="screen"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalName"><div class="modalhead"><div><div class="kicker">Log a set</div><h2 id="modalName"></h2><div id="modalTarget" class="sub"></div></div><button class="x" id="closeModal" type="button" aria-label="Close">×</button></div><form id="setForm" class="form"><div class="formgrid"><div class="field" id="loadField"><label for="setLoad" id="setLoadLabel">External load (kg)</label><input id="setLoad" type="number" step="0.5" inputmode="decimal" placeholder="0"></div><div class="field"><label for="setCount" id="setCountLabel">Repetitions</label><input id="setCount" type="number" min="1" max="2000" inputmode="decimal" step="1" required></div><div class="field"><label for="setRpe">Actual RPE</label><select id="setRpe"><option value="">Not recorded</option><option>5</option><option>6</option><option>6.5</option><option>7</option><option>7.5</option><option>8</option><option>8.5</option><option>9</option><option>9.5</option><option>10</option></select></div><div class="field" id="setBwField" hidden><label for="setBw">Bodyweight (kg)</label><input id="setBw" type="number" step="0.1" inputmode="decimal" min="25" max="300"></div><div class="field" id="setSideField" hidden><label for="setSide">Hand (choose left / right)</label><select id="setSide"><option value="">Both / general</option><option value="left">Left</option><option value="right">Right</option></select></div><div class="field wide" id="setImplementField" hidden><label for="setImplement">Equipment / gripper model (optional)</label><input id="setImplement" maxlength="80" placeholder="E.g. gripper model, plate thickness, handle"></div><div class="field wide" id="nearField" hidden><label class="row"><input type="checkbox" id="nearLimit" style="width:17px;height:17px"> Near technical failure (stopped safely)</label></div><div class="field wide"><label for="setDate">Date</label><input id="setDate" type="date" required></div><div class="field wide"><label for="setNotes">Notes (optional)</label><textarea id="setNotes" rows="2" maxlength="400" placeholder="Technique, equipment, variation…"></textarea></div></div><div class="buttonrow" style="justify-content:space-between"><button type="button" class="outline" id="saveClose">Save & close</button><button type="submit" class="primary" id="saveNext">Save + next set</button></div><div id="modalSaved" class="smallnote"></div></form></div></div>
+<div id="toast" class="toast" role="status"></div>
+<script>
+'use strict';
+const $=id=>document.getElementById(id);
+const html=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const f=n=>Number.isFinite(Number(n))?String(Number(Number(n).toFixed(2))):'—';
+const todayISO=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`};
+const themeKey='strength-hq-theme-v1';
+const applyTheme=()=>{document.documentElement.dataset.theme='dark';const meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.content='#000000'};
+applyTheme();
+const read=(k,v)=>{try{const x=JSON.parse(localStorage.getItem(k)||'null');return x===null?v:x}catch{return v}};
+const store=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v));return true}catch{alert('Browser storage is unavailable. Export a backup before continuing.');return false}};
+const KEY={new:'strength-hq-block1-v1',config:'strength-hq-block1-settings-v2',oldConfig:'strength-hq-block1-settings-v1',hybrid:'strength-hq-hybrid-v1',v1:'strength-hq-v1',v2:'strength-hq-v2'};
+const WEEKS=[['Foundation','Nov 16–22','RPE 7','Grip 1'],['Progress','Nov 23–29','RPE 7–8','Grip 2'],['Build','Nov 30–Dec 6','RPE 8','Grip 3'],['Heavy','Dec 7–13','RPE 8–9','Grip 4'],['Peak','Dec 14–20','Top 9–9.5','Grip maintenance'],['Deload','Dec 21–27','RPE 6','Grip deload']];
+const DAYS={mon:{label:'Monday',short:'Mon',title:'Heavy push / squats',offset:0},tue:{label:'Tuesday',short:'Tue',title:'Heavy pull / grip',offset:1},thu:{label:'Thursday',short:'Thu',title:'Full body / legs',offset:3},fri:{label:'Friday',short:'Fri',title:'Recovery / optional climbing',offset:4},sat:{label:'Saturday',short:'Sat',title:'Push / pull + grip',offset:5}};
+const GROUPS={main:'Main lifts',support:'Accessories',grip:'Grip & forearms'};
+const P=(sets,reps,rpe,opt=false,note='')=>({sets:String(sets),reps:String(reps),rpe:String(rpe),optional:opt,note});
+const B=(sets,reps,w5,w6,rpe=7)=>[P(sets,reps,rpe),P(sets,reps,rpe),P(sets,reps,rpe),P(sets,reps,rpe),w5,w6];
+const N=null;const PLAN={mon:[],tue:[],thu:[],fri:[],sat:[]};
+function add(day,id,name,group,unit,prescriptions,extra={}){if(prescriptions.length!==6)throw Error('Invalid prescription: '+id);PLAN[day].push({id,name,group,unit,plans:prescriptions,...extra})}
+// BLOCK 1 — definitive November 16–December 27, 2026. No previous schedule is displayed.
+// Monday heavy dip + squat.
+add('mon','dip-top','Weighted dip · top set','main','reps',[P(1,'2–3',7),P(1,'2–3','7–8'),P(1,'2–3',8),P(1,'2–3','8–9'),P(1,'2–3','9–9.5'),P(1,'2–3',6)],{exercise:'Weighted dip'});
+add('mon','dip-back','Weighted dip · back-offs','main','reps',[P(3,'5–6',7),P(3,'5–6',7),P(3,'5–6','7–8'),P(3,'5–6',8),P(3,'5–6',8),P(1,'5–6',6)],{exercise:'Weighted dip'});
+add('mon','squat','Barbell back squat','main','reps',[P(3,5,7),P(3,5,'7–8'),P(3,4,8),P(3,3,8),N,P(2,5,6)]);
+add('mon','squat-top','Squat · top set','main','reps',[N,N,N,N,P(1,3,'9–9.5'),N],{exercise:'Barbell back squat'});
+add('mon','squat-back','Squat · back-offs','main','reps',[N,N,N,N,P(3,6,8),N],{exercise:'Barbell back squat'});
+// Tuesday heavy weighted pulling.
+add('tue','pull-vol','Weighted pull-up','main','reps',[P(5,'5–6',7),P(5,'5–6','7–8'),P(5,'5–6',8),P(5,'5–6','8–9'),N,P(2,'5–6',6)]);
+add('tue','pull-top','Weighted pull-up · top set','main','reps',[N,N,N,N,P(1,'2–3','9–9.5'),N],{exercise:'Weighted pull-up'});
+add('tue','pull-back','Weighted pull-up · back-offs','main','reps',[N,N,N,N,P('2–3',5,'7.5–8'),N],{exercise:'Weighted pull-up'});
+// Thursday second dip, pull and squat exposure.
+add('thu','dip','Weighted dip','main','reps',[P(2,'5–6',7),P(2,'5–6','7–8'),P(2,'5–6',8),P(2,'5–6','8–9'),P(2,'5–6',8),P(1,5,6)]);
+add('thu','pull','Weighted pull-up','main','reps',[P(2,'5–6',7),P(2,'5–6','7–8'),P(2,'5–6',8),P(2,'5–6','8–9'),P(2,'5–6',8),P(1,5,6)]);
+add('thu','squat','Barbell back squat','main','reps',[P(3,5,7),P(3,5,'7–8'),P(3,4,8),P(3,3,8),P(3,3,8),P(2,5,6)]);
+// Saturday intentionally lower pull-up volume.
+add('sat','dip','Weighted dip','main','reps',[P(3,'5–6',7),P(3,'5–6','7–8'),P(3,'5–6',8),P(3,'5–6','8–9'),P(3,'5–6',8),P(1,5,6)]);
+add('sat','pull','Weighted pull-up','main','reps',[P(2,'4–6',7),P(2,'4–6','7–8'),P(2,'4–6',8),P(2,'4–6','8–9'),P(2,'4–6',8),P(1,5,6)]);
+// Monday accessories in the gym; wrist extensor finisher at home.
+add('mon','ohp','Standing barbell OHP','support','reps',B(2,'6–8',N,P(1,'6–8',6,true)));
+add('mon','hamcurl','Seated hamstring curl','support','reps',B(2,'10–15',P(2,'10–15',7),P(1,12,6)));
+add('mon','pushdown','Triceps pushdown','support','reps',B(2,'10–15',P(2,'10–15',7),P(1,'10–15',6,true)));
+add('mon','lateral','Dumbbell lateral raises','support','reps',B(2,'12–20',P(1,'12–20',7,true),N));
+add('mon','calves','Standing calf raises','support','reps',B(2,'8–15',P(2,'8–15',7),P(1,12,6)));
+add('mon','wristext','Wrist extensions','grip','reps',B(2,'15–20',P(1,'15–20',6,true),P(1,'15–20',6,true),7));
+// Tuesday gym pulling and supporting grip; cupping is at home.
+add('tue','row','Chest-supported row','support','reps',B(2,'8–12',P('1–2','8–12',7),P(1,10,6)),{hint:'Choose chest-supported or one-arm dumbbell row in Settings; use one variation for the block.'});
+add('tue','curl','EZ-bar / barbell curl','support','reps',B(2,'6–10',P('1–2','6–10',7),P(1,10,6)),{hint:'Use the same curl variation throughout the block.'});
+add('tue','rear','Rear-delt raises','support','reps',B(2,'12–20',P('1–2','12–20',7),N));
+add('tue','gripper','Dynamic gripper closes · per hand','grip','reps',[P(2,'5–8 /hand',7),P(2,'5–8 /hand',7),P(2,'5–8 /hand',7),P(2,'5–8 /hand',7),P(1,'5–8 /hand',6),N],{exercise:'Dynamic gripper closes',hand:true,hint:'After pull-ups and accessories, before weighted hangs. Track gripper model / resistance.'});
+add('tue','hang','Weighted two-arm dead hang','grip','sec',[P(4,'15–25 sec','Controlled'),P(4,'15–25 sec','Controlled'),P(4,'15–25 sec','Progress if ready'),P(4,'15–25 sec','Selective near limit'),P('1–2','15–20 sec','6–7'),N],{exercise:'Weighted dead hang',hint:'Priority support grip · regular pull-up bar. Keep an overhand grip and stop safely before slipping. If doing farmer’s walks, 3 hang sets may be enough.'});
+add('tue','pinch','Plate pinches · per hand','grip','sec',[P(4,'15–25 sec /hand','Controlled'),P(4,'15–25 sec /hand','Controlled'),P(4,'15–25 sec /hand','Progress if ready'),P(4,'15–25 sec /hand','Selective near limit'),P(2,'15–20 sec /hand','6–7'),N],{exercise:'Plate pinch hold',hand:true,hint:'Same plate thickness / pinch width for comparable records.'});
+add('tue','farmer','Farmer’s walk · kg per hand','grip','sec',[P(2,'20–30 sec','7–8',true),P(2,'20–30 sec','7–8',true),P(2,'20–30 sec','7–8',true),P(2,'20–30 sec','7–8',true),P(1,'20 sec','6–7',true),N],{exercise:'Farmer’s walk',hint:'Optional. Consider 30–35 kg per hand to start, adjusted to effort. Reduce weighted hangs to 3 sets if fatigue rises.'});
+add('tue','cupping','Thick-handle wrist cupping · full ROM','grip','reps',B(2,'10–15',P(1,'10–15',7),P(1,'10–15',6,true),7),{exercise:'Thick-handle wrist cupping',hint:'At home: thick PVC pipe, rope and hanging weights. Full controlled ROM.'});
+// Thursday posterior chain, including added 45° back extensions.
+add('thu','bulgarian','Bulgarian split squats','support','reps',B(2,'8–10 /leg',P('1–2','8–10 /leg',7),P(1,'8 /leg',6)),{hand:true,hint:'After squats. Start light and progress technique first.'});
+add('thu','rdl','Romanian deadlift','support','reps',[P(2,'6–10',7),P(2,'6–10',7),P(2,'6–10',7),P(2,'6–10',7),P('1–2','6–10',7),P(1,'6–10',6,true)],{hint:'Controlled hip hinge, bar close to legs; stop where hamstring tension is manageable.'});
+add('thu','backext','45° back extensions','support','reps',[P('1–2','10–15','6–7',true),P('1–2','10–15','6–7',true),P('1–2','10–15','6–7',true),P('1–2','10–15','6–7',true),P(1,'10–15',6,true),P(1,'10–15',6,true)],{hint:'Optional. Keep it easy if squats and Romanian deadlifts already fatigue your lower back.'});
+add('thu','fingerflex','Barbell finger-flexion wrist curls','grip','reps',[P(2,'12–20','7–8'),P(2,'12–20','7–8'),P(2,'12–20','7–8'),P(2,'12–20','7–8'),P(1,'12–20',7),N],{exercise:'Barbell finger-flexion wrist curl',hint:'Let the bar roll toward the fingers, then close your grip and flex the wrist under control.'});
+add('thu','wristext','Wrist extensions','grip','reps',B(2,'15–20',P(1,'15–20',7),P(1,'15–20',6,true),7));
+// Friday optional main climbing session; no strength work scheduled.
+// Saturday gym strength and pinch/crush grip; cupping is at home.
+add('sat','hammer','Hammer curls','support','reps',B(2,'8–12',P('1–2','8–12',7),P(1,'8–12',6,true)));
+add('sat','hamcurl','Seated hamstring curls','support','reps',B(2,'10–15',P('1–2','10–15',7),P(1,12,6)));
+add('sat','adductor','Hip adductor machine','support','reps',B(2,'12–15',P(1,'12–15',7,true),N,7).map(x=>x?{...x,optional:true}:x));
+add('sat','calves','Seated calf raises','support','reps',B(2,'12–20',P('1–2','12–20',7),P(1,12,6)));
+add('sat','lsit','L-sit holds','support','sec',[P(3,'10–20 sec',7),P(3,'10–20 sec',7),P(3,'10–20 sec',7),P(3,'10–20 sec',7),P('1–2','10–20 sec',7),P(1,'10–15 sec',6,true)]);
+add('sat','heavygrip','Heavy gripper closes · per hand','grip','reps',[P(3,'3–6 /hand','8–9'),P(3,'3–6 /hand','8–9'),P(3,'3–6 /hand','8–9'),P(3,'3–6 /hand','8–9'),P('1–2','3–6 /hand',7),N],{exercise:'Heavy gripper closes',hand:true,hint:'Priority crushing grip; maintain controlled closes. Reduce after hard Friday climbing.'});
+add('sat','assistedgrip','Assisted-close gripper hold · per hand','grip','sec',[P(1,'5–10 sec /hand',8,true),P(1,'5–10 sec /hand',8,true),P(1,'5–10 sec /hand',8,true),P(1,'5–10 sec /hand',8,true),N,N],{exercise:'Assisted-close gripper hold',hand:true,hint:'Optional. One controlled isometric hold; no failed closes.'});
+add('sat','pinch','Plate pinches · per hand','grip','sec',[P(3,'15–25 sec /hand','Controlled'),P(3,'15–25 sec /hand','Controlled'),P(3,'15–25 sec /hand','Progress if ready'),P(3,'15–25 sec /hand','Selective near limit'),P('1–2','15–20 sec /hand',6),N],{exercise:'Plate pinch hold',hand:true});
+add('sat','cupping','Thick-handle wrist cupping · full ROM','grip','reps',B(2,'10–15',P(1,'10–15',7),P(1,'10–15',6,true),7),{exercise:'Thick-handle wrist cupping',hint:'At home: thick PVC pipe, rope and hanging weights. Full controlled ROM.'});
+add('sat','fingerflex','Barbell finger-flexion wrist curls','grip','reps',[P(2,'12–20',7),P(2,'12–20',7),P(2,'12–20',7),P(2,'12–20',7),P(1,'12–20',7,true),N],{exercise:'Barbell finger-flexion wrist curl',hint:'Skip or reduce if fingers / forearms are still fatigued from Tuesday or climbing.'});
+// Move only location; keep the exercise IDs and canonical names for log compatibility.
+const HOME_SLOTS=new Set(['mon|wristext','tue|cupping','thu|wristext','sat|cupping']);
+for(const [d,items] of Object.entries(PLAN))for(const e of items){
+ if(HOME_SLOTS.has(`${d}|${e.id}`)){
+   e.location='home';
+   if(e.id==='cupping')e.name='PVC pipe wrist cupping · full ROM';
+ }
+}
+let rawConfig=read(KEY.config,null);
+const priorConfig=read(KEY.oldConfig,{});
+const config=rawConfig&&typeof rawConfig==='object'&&!Array.isArray(rawConfig)?rawConfig:{bodyweight:priorConfig?.bodyweight||null,restDay:priorConfig?.restDay||'next',rowVariant:'chest',overrides:{},custom:[],checks:{}};
+config.overrides ||= {};config.custom ||= [];config.checks ||= {};config.sessionCompletions ||= {};config.bodyweight ||= null;config.restDay ||= 'next';config.rowVariant ||= 'chest';
+// Upgrade defaults only, never workout history. Keep old overrides as a recoverable backup.
+if(config.programRevision!=='2026-11-19-final'){
+ const affected=new Set(['mon|pinch','mon|ball','tue|hang','tue|pinch','tue|farmer','tue|ball','tue|cupping','thu|hipthrust','thu|backext','thu|wristext','sat|adductor','sat|crunch','sat|pinch','sat|ball','sat|farmer','sat|cupping']);
+ config.archivedOverrides={...(config.archivedOverrides||{}),...Object.fromEntries(Object.entries(config.overrides).filter(([k])=>affected.has(k.split('|').slice(1).join('|'))))};
+ for(const k of Object.keys(config.overrides))if(affected.has(k.split('|').slice(1).join('|')))delete config.overrides[k];
+ config.programRevision='2026-11-19-final';settingsSave();
+}
+let rawLogs=read(KEY.new,[]);let logs=Array.isArray(rawLogs)?rawLogs.filter(x=>x&&x.id&&x.date&&x.exercise):[];
+let view='train',week=1,day='mon',selectedExercise=null,progressExercise='Weighted pull-up',filter='all',historyLimit=12,modalCount=0;
+const baseDate=new Date(2026,10,16,12);function wkFromDate(d){const d0=new Date(d.getFullYear(),d.getMonth(),d.getDate(),12);return Math.max(1,Math.min(6,Math.floor((d0-baseDate)/604800000)+1))}
+function selFromToday(){const d=new Date();week=wkFromDate(d);const dow=d.getDay(),mapping={1:'mon',2:'tue',4:'thu',5:'fri',6:'sat'};if(mapping[dow])day=mapping[dow];else if(config.restDay==='calendar')day='mon';else{const next=[1,2,4,5,6].find(n=>n>dow)||1;day=mapping[next];if(next<=dow&&d>=baseDate&&week<6)week++}}
+selFromToday();
+function exerciseKey(w,d,id){return `${w}|${d}|${id}`}
+function checkKey(w,d,id){return `block1|${exerciseKey(w,d,id)}`}
+function settingsSave(){return store(KEY.config,config)}
+function slotDate(w,d){const a=new Date(baseDate);a.setDate(a.getDate()+7*(w-1)+DAYS[d].offset);return `${a.getFullYear()}-${String(a.getMonth()+1).padStart(2,'0')}-${String(a.getDate()).padStart(2,'0')}`}
+function activeExercises(w,d){const list=PLAN[d].concat(config.custom.filter(x=>x.day===d).map(x=>({id:x.id,name:x.name,group:x.group,unit:x.unit,location:x.location==='home'?'home':'gym',plans:Array.from({length:6},()=>P(x.sets,x.reps,x.rpe))})));return list.map(item=>{const p=item.plans[w-1];if(!p)return null;const over=config.overrides[exerciseKey(w,d,item.id)]||{};return {...item,location:item.location==='home'?'home':'gym',name:over.name||(item.id==='row'&&d==='tue'&&config.rowVariant==='dumbbell'?'One-arm dumbbell row · per arm':item.name),hand:item.hand||(item.id==='row'&&d==='tue'&&config.rowVariant==='dumbbell'),p:{...p,...over},targetWeight:over.weight,hidden:over.hidden===true}}).filter(Boolean)}
+function savedLogs(){const previous=[KEY.hybrid,KEY.v1,KEY.v2].flatMap(k=>{const a=read(k,[]);return Array.isArray(a)?a.filter(r=>r&&r.id&&r.exercise&&r.date).map(x=>({...x,legacy:true})):[]});const map=new Map();for(const x of [...previous,...logs]){const k=String(x.id);if(!map.has(k)||!x.legacy)map.set(k,x)}return [...map.values()].sort((a,b)=>String(b.date).localeCompare(String(a.date))||(Number(b.created||0)-Number(a.created||0)))}
+function canonical(n){n=String(n||'').trim().replace(/\s*·\s*(top set|back-offs|strength|main session|optional technique|per hand).*$/i,'');const alias={'Weighted pull-ups':'Weighted pull-up','Weighted dips':'Weighted dip','Squat':'Barbell back squat','Deep barbell squat':'Barbell back squat','Deep barbell squats':'Barbell back squat','Dead hang':'Weighted dead hang','Weighted two-arm dead hang':'Weighted dead hang','Thick-handle cupping':'Thick-handle wrist cupping','Thick-handle wrist cupping · full ROM':'Thick-handle wrist cupping','Barbell finger-flexion wrist curls':'Barbell finger-flexion wrist curl','Plate pinches':'Plate pinch hold','Dynamic gripper closes':'Dynamic gripper closes','Heavy gripper closes':'Heavy gripper closes'};return alias[n]||n}
+function normalizedUnit(r){return r.unit||(canonical(r.exercise)==='Bouldering'?'min':/hang|pinch hold|farmer/i.test(r.exercise)?'sec':'reps')}
+function go(tab){view=tab;document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===tab));document.querySelectorAll('[data-tab]').forEach(b=>{b.classList.toggle('active',b.dataset.tab===tab);if(b.dataset.tab===tab)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});if(tab==='train')renderTrain();if(tab==='progress')renderProgress();if(tab==='program')renderProgram();if(tab==='settings')renderSettings();window.scrollTo({top:0,behavior:'instant'})}
+const weekButtons=(target)=>$(target).innerHTML=WEEKS.map((x,i)=>`<button type="button" class="weekbtn ${week===i+1?'active':''}" data-week="${i+1}" aria-pressed="${week===i+1}">W${i+1}</button>`).join('');
+function totalSetsFor(e){const n=Number.parseInt(e.p.sets,10);return Number.isFinite(n)?n:1}
+function loggedSetsFor(e){return logs.filter(r=>Number(r.week)===week&&r.day===day&&r.slotId===e.id).length}
+function goalSetsFor(e){return totalSetsFor(e)*(e.hand?2:1)}
+function groupRows(arr,group,canLog=true,location='gym'){const items=arr.filter(x=>x.group===group&&!x.hidden&&x.location===location);if(!items.length)return '';return `<div class="group"><div class="group-head"><h3>${GROUPS[group]}</h3><span class="tiny muted">${group==='main'?'Main lifts first':group==='grip'?week<5?'Dedicated grip':'Recovery phase':group==='climb'?'Optional':week===6?'Light effort':'Usually RPE 7'}</span></div><div class="exercise-list">${items.map(e=>{const r=e.p,done=loggedSetsFor(e),goal=goalSetsFor(e),load=e.targetWeight!==undefined&&e.targetWeight!==''?` · Target ${f(e.targetWeight)} kg`:'';return `<div class="exercise ${done>=goal?'is-complete':''}"><div class="exmain"><div class="exname">${html(e.name)} ${r.optional?'<span class="opt">optional</span>':''}</div>${e.hint?`<div class="exhint">${html(e.hint)}</div>`:''}${load?`<div class="exhint">${html(load.slice(3))}</div>`:''}</div><div class="dosage"><b>${html(r.sets)} × ${html(r.reps)}</b><small>${group==='climb'?html(r.rpe):(/^\d/.test(String(r.rpe))?'RPE '+html(r.rpe):html(r.rpe))}</small><small class="logged">${done}/${goal} sets</small></div>${canLog?`<button class="plus" type="button" data-log="${html(e.id)}" aria-label="Log ${html(e.name)}">+</button>`:''}</div>`}).join('')}</div></div>`}
+function sessionKey(w,d,location){return `${slotDate(w,d)}|${location}`}
+function sectionProgress(arr,location){
+ const required=arr.filter(e=>e.location===location&&!e.hidden&&!e.p.optional);
+ const total=required.reduce((n,e)=>n+goalSetsFor(e),0);
+ const done=required.reduce((n,e)=>n+Math.min(goalSetsFor(e),loggedSetsFor(e)),0);
+ const marked=Boolean(config.sessionCompletions[sessionKey(week,day,location)]);
+ return {total,done,marked,completed:marked||(total>0&&done>=total)};
+}
+function renderSession(arr,location){
+ const items=arr.filter(e=>e.location===location&&!e.hidden);
+ if(!items.length)return '';
+ const p=sectionProgress(arr,location),name=location==='home'?'Home Finisher':'Gym Workout';
+ const note=location==='home'?'Do this later at home. Log under the same training date.':'Main lifts and gym grip work first.';
+ const pct=p.total?Math.min(100,Math.round(p.done/p.total*100)):0;
+ return `<section class="session-block ${p.completed?'is-complete':''}" data-location="${location}" aria-label="${name}">
+ <div class="session-titlebar"><div><h3 class="session-title">${name}</h3><div class="session-sub">${note}</div></div>
+ <button type="button" class="session-complete" data-session-toggle="${location}" aria-pressed="${p.marked}">${p.marked?'✓ Done · undo':'Mark done'}</button></div>
+ <div class="workout-progress"><span>${p.completed?'Session complete':'Required sets logged'}</span><strong>${p.done} / ${p.total}</strong><div class="bar"><span style="width:${pct}%"></span></div></div>
+ ${['main','support','grip'].map(g=>groupRows(arr,g,true,location)).join('')}</section>`;
+}
+function renderTrain(){
+ weekButtons('trainWeeks');
+ $('trainDate').textContent='16 NOV – 27 DEC 2026 · BLOCK 1';
+ $('trainPhase').textContent=`${WEEKS[week-1][0]} · ${WEEKS[week-1][2]} · ${WEEKS[week-1][3]}`;
+ $('trainDays').innerHTML=Object.keys(DAYS).map(k=>`<button type="button" data-day="${k}" class="daybtn ${day===k?'active':''}" aria-pressed="${day===k}"><b>${DAYS[k].short}</b><span>${html(DAYS[k].title)}</span></button>`).join('');
+ const arr=activeExercises(week,day),heading=`<div class="heading" style="margin-top:25px"><div><div class="kicker">${slotDate(week,day)} · Week ${week}</div><h2>${DAYS[day].label}</h2><div class="sub">${DAYS[day].title}</div></div></div>`;
+ let message='';
+ if(week===1&&day==='tue')message='Week 1 calibration: try +17.5 kg × 5, then adjust to RPE 7. This is an assessment, not a fixed target.';
+ if(day==='mon')message='Do main lifts first. Wrist extensions are a separate home finisher; keep fingers fresh for Tuesday.';
+ if(day==='tue')message='Gym: weighted pull-ups, grippers, hangs and pinches. Do cupping later with your PVC pipe at home.';
+ if(day==='thu')message='Gym: squats, Bulgarian splits, RDL and finger-flexion curls. Wrist extensions are at home. Back extensions are optional.';
+ if(day==='fri')message='Optional 45–60 minutes of bouldering with your friend. No logging required. Keep enough finger capacity for Saturday.';
+ if(day==='sat')message='Gym: heavy grippers, pinches and finger curls. PVC cupping is at home. Reduce grip work after hard Friday climbing.';
+ if(week===5)message='Peak week: clean main-lift top sets. Reduced accessories and grip; no maximal climbing.';
+ if(week===6)message='Deload: roughly half the normal volume at RPE 6. No intensive grip or weighted hangs.';
+ if(day==='sat'&&week===4)message='Grip week 4: near-limit effort only if recovered. Protect fingers and elbows.';
+ $('trainWorkout').innerHTML=heading+(message?`<div class="notice">${html(message)}</div>`:'')+renderSession(arr,'gym')+renderSession(arr,'home')+`<div class="smallnote">Gym and Home progress are independent. Both save to ${slotDate(week,day)}.</div>`;
+}
+function groupProgramRows(arr,group,location='gym'){const items=arr.filter(x=>x.group===group&&!x.hidden&&x.location===location);return items.length?`<div class="group" style="margin-top:12px"><div class="group-head"><h3>${GROUPS[group]}</h3></div><div class="exercise-list">${items.map(e=>`<div class="exercise"><div class="exmain"><div class="exname">${html(e.name)}${e.p.optional?' · optional':''}</div></div><div class="dosage"><b>${html(e.p.sets)} × ${html(e.p.reps)}</b><small>${e.group==='climb'?html(e.p.rpe):(/^\d/.test(String(e.p.rpe))?'RPE '+html(e.p.rpe):html(e.p.rpe))}</small></div></div>`).join('')}</div></div>`:''}
+function renderProgram(){weekButtons('programWeeks');const phase=week===5?'Peak week: heavy Monday dip/squat and Tuesday pull-up top sets. Approximately half the grip volume.':week===6?'Deload: lower main-lift load and volume, minimal accessory work, no intensive grip.':`Week ${week}: main lifts ${WEEKS[week-1][2]}. ${week===4?'Hard grip work only when fully recovered.':'Establish consistent grip loads, progress gradually and avoid slipping or failed closes.'}`;$('programPhase').textContent=phase;$('scheduleOverview').innerHTML=`${[['Mon','Gym push/squats · home wrist extensions'],['Tue','Gym pull/grip · home PVC cupping'],['Wed','Rest · optional easy mobility'],['Thu','Gym full body/finger curls · home extensions'],['Fri','Optional bouldering'],['Sat','Gym push/pull/grip · home PVC cupping'],['Sun','Rest']].map((x,i)=>`<div class="row spread" style="padding:${i?'8px':'3px'} 0;${i?'border-top:1px solid var(--stroke);':''}"><b style="font-size:12px;min-width:32px">${x[0]}</b><span class="sub" style="font-size:12px;text-align:right">${x[1]}</span></div>`).join('')}`;$('programExercises').innerHTML=Object.keys(DAYS).map(d=>{const arr=activeExercises(week,d);const content=['gym','home'].map(location=>{if(!arr.some(e=>e.location===location&&!e.hidden))return '';return `<div class="sectionlabel" style="margin-top:15px">${location==='gym'?'Gym Workout':'Home Finisher'}</div>`+['main','support','grip'].map(g=>groupProgramRows(arr,g,location)).join('')}).join('');return `<details ${d===day?'open':''}><summary>${DAYS[d].label} — ${DAYS[d].title}</summary><div class="detailbody">${content||'<div class="smallnote">Optional climbing / recovery. No logging required.</div>'}</div></details>`}).join('')}
+const PROG_CHOICES=['Weighted pull-up','Weighted dip','Barbell back squat','Weighted dead hang','Plate pinch hold','Dynamic gripper closes','Heavy gripper closes','Assisted-close gripper hold','Farmer’s walk','Thick-handle wrist cupping','Barbell finger-flexion wrist curl','Wrist extensions'];
+function chartFor(rows,title,unit){if(rows.length<2)return `<div class="soft">${html(title)}: log at least two sessions to see a trend.</div>`;const byDate=new Map();for(const r of rows){const v=Number(r.metric);if(!Number.isFinite(v))continue;byDate.set(r.date,Math.max(byDate.get(r.date)??-Infinity,v))}const pts=[...byDate.entries()].sort((a,b)=>a[0].localeCompare(b[0])).slice(-16);if(pts.length<2)return `<div class="soft">Record this exercise on two different days to see a trend.</div>`;const vals=pts.map(p=>p[1]),mn=Math.min(...vals),mx=Math.max(...vals),pad=Math.max(1,(mx-mn)*.25),low=Math.max(0,mn-pad),high=mx+pad,w=360,h=151,left=17,top=12,right=10,bottom=27;const coordinates=pts.map((p,i)=>{const x=left+i*(w-left-right)/Math.max(1,pts.length-1),y=top+(high-p[1])/(high-low)*(h-top-bottom);return [x,y]});const path=coordinates.map((p,i)=>(i?'L':'M')+p.map(z=>z.toFixed(1)).join(' ')).join(' ');return `<div class="card"><div class="row spread"><b style="font-size:13px">${html(title)}</b><span class="tiny muted">${html(unit)}</span></div><svg class="linegraph" viewBox="0 0 ${w} ${h}" role="img" aria-label="${html(title)} over recent sessions"><path d="M${left} ${top}V${h-bottom}H${w-right}" fill="none" stroke="#555555"/><path d="${path}" fill="none" stroke="#d3ffd8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>${coordinates.map(c=>`<circle cx="${c[0]}" cy="${c[1]}" r="3.5" fill="#d3ffd8"/>`).join('')}<text x="${left+1}" y="11" font-size="10" fill="#c8c8c8">${f(mx)}</text><text x="${left+1}" y="${h-10}" font-size="10" fill="#c8c8c8">${pts[0][0].slice(5)}</text><text x="${w-right}" y="${h-10}" font-size="10" text-anchor="end" fill="#c8c8c8">${pts.at(-1)[0].slice(5)}</text></svg><div class="row spread tiny muted"><span>First: ${f(pts[0][1])} ${html(unit)}</span><strong style="color:var(--green)">Latest: ${f(pts.at(-1)[1])} ${html(unit)}</strong></div></div>`}
+function progressRecord(r){return {reps:Number(r.reps),weight:Number(r.weight),bw:Number(r.bw),date:r.date,unit:normalizedUnit(r),rpe:Number(r.rpe),side:r.side||'',exercise:canonical(r.exercise)}}
+function renderProgress(){
+ const raw=savedLogs();
+ const labels={'Barbell back squat':'Squat','Weighted dead hang':'Dead hang','Plate pinch hold':'Pinch','Dynamic gripper closes':'Gripper · dynamic','Heavy gripper closes':'Gripper · heavy','Assisted-close gripper hold':'Gripper · hold','Farmer’s walk':'Farmer’s','Thick-handle wrist cupping':'Cupping','Barbell finger-flexion wrist curl':'Finger curls','Wrist extensions':'Wrist ext.'};
+ $('progressChoices').innerHTML=PROG_CHOICES.map(n=>`<button type="button" data-progress="${html(n)}" class="${progressExercise===n?'active':''}">${html(labels[n]||n.replace('Weighted ','').replace('Barbell ','').trim())}</button>`).join('');
+ const chosen=raw.filter(r=>canonical(r.exercise)===progressExercise).map(progressRecord).filter(r=>Number.isFinite(r.weight)&&r.reps>0);
+ let chart='',pr='';const isStrength=['Weighted pull-up','Weighted dip','Barbell back squat'].includes(progressExercise);const isTimed=['Weighted dead hang','Plate pinch hold','Farmer’s walk','Assisted-close gripper hold'].includes(progressExercise);
+ if(isStrength){
+  const reps=[1,2,3,5,6];
+  pr=`<div class="sectionlabel">Rep-specific PRs</div><div class="recordgrid">${reps.map(n=>{const r=chosen.filter(x=>x.reps===n&&x.unit==='reps').sort((a,b)=>b.weight-a.weight)[0];return `<div class="recordbox"><small>${n} rep${n===1?'':'s'}</small><b>${r?(progressExercise==='Barbell back squat'?'':'+')+f(r.weight)+' kg':'—'}</b></div>`}).join('')}</div>`;
+  const comparable=chosen.filter(r=>r.unit==='reps'&&r.reps>=1&&r.reps<=8&&(progressExercise==='Barbell back squat'||r.bw>=25&&r.bw<=300)).map(r=>({...r,metric:(r.weight+(progressExercise==='Barbell back squat'?0:r.bw))*(1+r.reps/30)}));
+  chart=chartFor(comparable,'Estimated total-load 1RM','kg')+'<p class="smallnote">Estimated 1RM is only a trend. Weighted pull-up / dip estimates require bodyweight and comparable clean sets.</p>';
+ }else if(isTimed){
+  const min=progressExercise==='Assisted-close gripper hold'?5:15;
+  const max=progressExercise==='Assisted-close gripper hold'?12:30;
+  const c=chosen.filter(r=>r.unit==='sec'&&r.reps>=min&&r.reps<=max);
+  chart=chartFor(c.map(r=>({...r,metric:r.weight})),`Best load (${min}–${max}s)`,'kg');
+  const top=c.sort((a,b)=>b.weight-a.weight)[0];
+  pr=`<div class="sectionlabel">Best comparable hold</div><div class="card"><strong class="pr-value">${top?f(top.weight)+' kg':'—'}</strong><p class="smallnote">${top?`${f(top.reps)} sec${top.side?' · '+html(top.side):''}`:'Log a comparable hold to set a record.'} · Keep bar diameter, plate thickness and equipment consistent. Farmer’s load is per hand.</p></div>`;
+ }else{
+  const repRange=progressExercise==='Heavy gripper closes'?[3,6]:progressExercise==='Dynamic gripper closes'?[5,8]:progressExercise==='Thick-handle wrist cupping'?[10,15]:progressExercise==='Barbell finger-flexion wrist curl'?[12,20]:[15,20];
+  const comparable=chosen.filter(r=>r.unit==='reps'&&r.reps>=repRange[0]&&r.reps<=repRange[1]);
+  chart=chartFor(comparable.map(r=>({...r,metric:r.weight})),`Best resistance (${repRange[0]}–${repRange[1]} reps)`,'kg / rating');
+  const top=comparable.sort((a,b)=>b.weight-a.weight)[0];
+  pr=`<div class="sectionlabel">Best set in target rep range</div><div class="card"><strong class="pr-value">${top?f(top.weight):'—'}</strong><p class="smallnote">${top?`${f(top.reps)} reps${top.side?' · '+html(top.side):''}`:'Log a set to establish a record.'} · Compare only the same gripper rating scale or exercise implement.</p></div>`;
+ }
+ $('progressDetails').innerHTML=chart+pr;
+ const names=[...new Set(raw.map(r=>canonical(r.exercise)))].sort((a,b)=>a.localeCompare(b));
+ $('historyFilter').innerHTML=`<option value="all">All exercises (${raw.length} sets)</option>`+names.map(x=>`<option value="${html(x)}">${html(x)}</option>`).join('');if(filter!=='all'&&!names.includes(filter))filter='all';$('historyFilter').value=filter;renderHistory(raw);
+}
+function displayEntry(r){const x=Number(r.reps),unit=normalizedUnit(r);if(unit==='min')return `${f(x)} min${r.sent?' · '+html(r.sent):''}`;const w=Number(r.weight);const lead=Number.isFinite(w)?(w>0&&/weighted|hang/i.test(r.exercise)?'+':'')+f(w)+' kg · ':'';return `${r.sets&&Number(r.sets)>1?f(r.sets)+' × ':''}${lead}${f(x)} ${unit==='sec'?'sec':'reps'}`}
+function renderHistory(all=savedLogs()){const rows=all.filter(r=>filter==='all'||canonical(r.exercise)===filter);$('history').innerHTML=rows.length?rows.slice(0,historyLimit).map(r=>`<div class="entry"><div><b>${html(r.exercise)}</b><small>${html(r.date)}${r.location?' · '+(r.location==='home'?'Home':'Gym'):''}${r.rpe?' · RPE '+html(r.rpe):''}${r.nearFailure?' · Near limit':''}${r.side?' · '+html(r.side):''}${r.implement?' · '+html(r.implement):''}${r.note?' · '+html(r.note):''}</small></div><div class="entry-right"><b>${displayEntry(r)}</b>${r.legacy?'':`<small><button type="button" class="remove" data-delete="${html(r.id)}">Delete</button></small>`}</div></div>`).join(''):'<div class="smallnote">No workouts saved yet.</div>';$('moreHistory').hidden=historyLimit>=rows.length}
+function renderSettings(){const w=week,d=day;$('bodyweight').value=config.bodyweight||'';$('restDay').value=config.restDay;$('rowVariant').value=config.rowVariant;$('editWeek').innerHTML=WEEKS.map((x,i)=>`<option value="${i+1}">Week ${i+1} · ${x[0]}</option>`).join('');$('editWeek').value=w;const dayOpts=Object.keys(DAYS).map(k=>`<option value="${k}">${DAYS[k].label}</option>`).join('');$('editDay').innerHTML=dayOpts;$('editDay').value=d;$('customDay').innerHTML=dayOpts;$('customDay').value=d;editExerciseOptions();renderCustom()}
+function editExerciseOptions(){const w=Number($('editWeek').value||week),d=$('editDay').value||day,list=activeExercises(w,d);$('editExercise').innerHTML=list.map(e=>`<option value="${html(e.id)}">${html(e.name)}</option>`).join('');editFields()}
+function editFields(){const w=+$('editWeek').value,d=$('editDay').value,id=$('editExercise').value,e=activeExercises(w,d).find(x=>x.id===id);if(!e)return;$('editName').value=e.name;$('editSets').value=e.p.sets;$('editReps').value=e.p.reps;$('editRpe').value=e.p.rpe;$('editWeight').value=e.targetWeight??'';$('editHidden').checked=e.hidden}
+function renderCustom(){$('customList').innerHTML=config.custom.length?config.custom.map(x=>`<div class="entry"><div><b>${html(x.name)}</b><small>${html(DAYS[x.day]?.label||x.day)} · ${x.location==='home'?'Home':'Gym'} · ${html(x.sets)}×${html(x.reps)}</small></div><button type="button" class="remove" data-remove-custom="${html(x.id)}">Remove</button></div>`).join(''):'<div class="smallnote">No custom exercises added.</div>'}
+function persistLogs(){return store(KEY.new,logs)}
+function toast(s){$('toast').textContent=s;$('toast').style.display='block';clearTimeout(toast.timer);toast.timer=setTimeout(()=>$('toast').style.display='none',2200)}
+function refresh(){if(view==='train')renderTrain();if(view==='progress')renderProgress();if(view==='program')renderProgram();if(view==='settings')renderSettings()}
+function startLog(id){const e=activeExercises(week,day).find(x=>x.id===id);if(!e)return;selectedExercise=e;modalCount=0;const actual=e.exercise||e.name.replace(/\s*·.*/,''),isClimb=e.group==='climb',timed=e.unit==='sec';$('modalName').textContent=e.name;$('modalTarget').textContent=`Week ${week} · ${e.p.sets} × ${e.p.reps} · ${isClimb||!/^\d/.test(String(e.p.rpe))?e.p.rpe:'RPE '+e.p.rpe}`;$('setDate').value=slotDate(week,day);$('setCountLabel').textContent=timed?'Seconds held':'Repetitions';$('setLoadLabel').textContent=/farmer/i.test(actual)?'Load per hand (kg)':/gripper/i.test(actual)?'Resistance / rating (numeric)':'External load (kg)';$('setImplementField').hidden=!/gripper|pinch|finger|cupping|farmer|hang/i.test(actual);$('setImplement').value='';$('loadField').hidden=isClimb;$('setBwField').hidden=!['Weighted pull-up','Weighted dip','Weighted dead hang'].includes(canonical(actual));$('setSideField').hidden=!e.hand;$('nearField').hidden=!(e.group==='grip'&&week<=4&&day!=='mon'&&!/wrist/i.test(e.id));$('setRpe').value='';$('setNotes').value='';$('setSide').value='';$('nearLimit').checked=false;$('setBw').value=config.bodyweight||'';$('setCount').value='';const last=savedLogs().find(x=>canonical(x.exercise)===canonical(actual)&&normalizedUnit(x)===e.unit);$('setLoad').value=e.targetWeight!==undefined&&e.targetWeight!==''?e.targetWeight:last&&Number.isFinite(+last.weight)?last.weight:'';$('modalSaved').textContent='';$('modalBackdrop').classList.add('open');$('setCount').focus()}
+function closeLog(){$('modalBackdrop').classList.remove('open');selectedExercise=null;modalCount=0;if(view==='train')renderTrain()}
+function logSet(close){const e=selectedExercise;if(!e)return;if(e.hand&&!$('setSide').value){toast('Choose left or right hand');return;}const unit=e.unit,actual=e.exercise||e.name.replace(/\s*·.*/,''),count=Number($('setCount').value),weight=$('setLoad').value===''?0:Number($('setLoad').value),rpe=$('setRpe').value===''?null:Number($('setRpe').value),bw=$('setBw').value===''?null:Number($('setBw').value),date=$('setDate').value;if(!/^\d{4}-\d{2}-\d{2}$/.test(date)||!Number.isFinite(Date.parse(date+'T12:00:00'))||!Number.isFinite(count)||count<=0||count>2000||!Number.isFinite(weight)||Math.abs(weight)>1000||rpe!==null&&(rpe<1||rpe>10)||bw!==null&&(bw<25||bw>300)){toast('Check weight, repetitions and date');return}let record={id:'block1-'+Date.now()+'-'+Math.random().toString(36).slice(2,10),created:Date.now(),date,week,day,location:e.location||'gym',slotId:e.id,exercise:actual,kind:e.group==='climb'?'climb':'strength',unit,weight:e.group==='climb'?0:weight,reps:count,sets:1,rpe,bw,side:$('setSide').value||undefined,nearFailure:$('nearLimit').checked,implement:$('setImplement').value.trim(),note:$('setNotes').value.trim()};logs.push(record);if(!persistLogs()){logs.pop();return}modalCount++;if(close){closeLog();renderTrain();toast('Set saved')}else{$('modalSaved').textContent=`${modalCount} set${modalCount===1?'':'s'} saved here · ready for the next set`;$('setNotes').value='';$('nearLimit').checked=false;toast('Set saved')}}
+function fileDownload(name,data){const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500)}
+function exportData(){fileDownload(`strength-hq-block1-backup-${todayISO()}.json`,{app:'Strength HQ',version:6,exportedAt:new Date().toISOString(),block1Records:logs,block1Settings:config,previousBlock1Settings:read(KEY.oldConfig,{}),hybridRecords:read(KEY.hybrid,[]),records:read(KEY.v1,[]),v2Records:read(KEY.v2,[])})}
+async function importData(file){if(file.size>10000000)throw Error('File too large');const data=JSON.parse(await file.text());if(!data||typeof data!=='object'||Array.isArray(data))throw Error('Invalid backup');const targets=[['block1Records',KEY.new],['hybridRecords',KEY.hybrid],['records',KEY.v1],['v2Records',KEY.v2]];if(!targets.some(([field])=>Array.isArray(data[field])))throw Error('No recognized workout records');if(!confirm('Import this backup? Existing records are kept, and duplicate IDs are skipped.'))return;for(const [field,key] of targets){if(!Array.isArray(data[field]))continue;const cur=read(key,[]);const old=Array.isArray(cur)?cur:[],ids=new Set(old.map(x=>String(x?.id)));const next=[...old];for(const x of data[field])if(x&&typeof x.id==='string'&&typeof x.date==='string'&&typeof x.exercise==='string'&&!ids.has(x.id)){next.push(x);ids.add(x.id)}if(!store(key,next))throw Error('Unable to save '+field)}logs=read(KEY.new,[]);if(data.block1Settings&&typeof data.block1Settings==='object'&&confirm('Also restore program settings? Older backups will restore bodyweight but not obsolete workout targets.')){const imported=data.block1Settings;if(Number(data.version)>=6){config.overrides=imported.programRevision==='2026-11-19-final'&&imported.overrides&&typeof imported.overrides==='object'?imported.overrides:{};config.custom=Array.isArray(imported.custom)?imported.custom:[];config.rowVariant=imported.rowVariant==='dumbbell'?'dumbbell':'chest';config.programRevision='2026-11-19-final'}if(imported.sessionCompletions&&typeof imported.sessionCompletions==='object'&&!Array.isArray(imported.sessionCompletions))config.sessionCompletions={...config.sessionCompletions,...imported.sessionCompletions};config.bodyweight=imported.bodyweight||null;config.restDay=imported.restDay==='calendar'?'calendar':'next';settingsSave()}refresh();toast('Backup restored')}
+// Interaction
+for(const target of ['trainWeeks','programWeeks'])$(target).addEventListener('click',ev=>{const b=ev.target.closest('[data-week]');if(!b)return;week=+b.dataset.week;refresh()});
+$('trainDays').addEventListener('click',ev=>{const b=ev.target.closest('[data-day]');if(!b)return;day=b.dataset.day;renderTrain()});$('jumpToday').onclick=()=>{selFromToday();renderTrain()};
+$('trainWorkout').addEventListener('click',ev=>{
+ const doneButton=ev.target.closest('[data-session-toggle]');
+ if(doneButton){const location=doneButton.dataset.sessionToggle,key=sessionKey(week,day,location);config.sessionCompletions[key]=!config.sessionCompletions[key];if(settingsSave()!==false)renderTrain();return;}
+ const b=ev.target.closest('[data-log]');if(b)startLog(b.dataset.log);
+});
+document.querySelector('.tabs').addEventListener('click',ev=>{const b=ev.target.closest('[data-tab]');if(b)go(b.dataset.tab)});
+$('progressChoices').addEventListener('click',ev=>{const b=ev.target.closest('[data-progress]');if(!b)return;progressExercise=b.dataset.progress;renderProgress()});$('historyFilter').onchange=()=>{filter=$('historyFilter').value;historyLimit=12;renderHistory()};$('moreHistory').onclick=()=>{historyLimit+=12;renderHistory()};$('history').addEventListener('click',ev=>{const b=ev.target.closest('[data-delete]');if(!b)return;if(!confirm('Delete this logged set?'))return;logs=logs.filter(x=>x.id!==b.dataset.delete);persistLogs();renderProgress()});
+$('closeModal').onclick=closeLog;$('modalBackdrop').addEventListener('click',ev=>{if(ev.target===$('modalBackdrop'))closeLog()});document.addEventListener('keydown',ev=>{if(ev.key==='Escape'&&selectedExercise)closeLog()});$('setForm').onsubmit=ev=>{ev.preventDefault();logSet(false)};$('saveClose').onclick=()=>logSet(true);
+$('rowVariant').onchange=()=>{config.rowVariant=$('rowVariant').value;settingsSave();toast('Row variation updated')};
+$('saveGeneral').onclick=()=>{const n=$('bodyweight').value===''?null:Number($('bodyweight').value);if(n!==null&&(n<25||n>300||!Number.isFinite(n))){toast('Enter a valid bodyweight');return}config.bodyweight=n;config.restDay=$('restDay').value;config.rowVariant=$('rowVariant').value;settingsSave();toast('Preferences saved')};
+$('editWeek').onchange=editExerciseOptions;$('editDay').onchange=editExerciseOptions;$('editExercise').onchange=editFields;
+$('saveTarget').onclick=()=>{const w=+$('editWeek').value,d=$('editDay').value,id=$('editExercise').value;const key=exerciseKey(w,d,id);const old=activeExercises(w,d).find(x=>x.id===id);if(!old)return;const name=$('editName').value.trim(),sets=$('editSets').value.trim(),reps=$('editReps').value.trim(),rpe=$('editRpe').value.trim(),wt=$('editWeight').value;if(!name||!sets||!reps||!rpe){toast('Fill out the targets');return}if(wt!==''&&(!Number.isFinite(Number(wt))||Math.abs(Number(wt))>1000)){toast('Check target weight');return}config.overrides[key]={name,sets,reps,rpe,weight:wt===''?'':Number(wt),hidden:$('editHidden').checked};settingsSave();editExerciseOptions();toast('Target updated')};
+$('restoreTarget').onclick=()=>{const key=exerciseKey(+$('editWeek').value,$('editDay').value,$('editExercise').value);delete config.overrides[key];settingsSave();editExerciseOptions();toast('Default restored')};
+$('addCustom').onclick=()=>{const name=$('customName').value.trim(),day=$('customDay').value,group=$('customGroup').value,sets=$('customSets').value.trim(),reps=$('customReps').value.trim(),rpe=$('customRpe').value.trim(),unit=$('customUnit').value,location=$('customLocation').value;if(!name||!sets||!reps||!rpe){toast('Enter name and targets');return}config.custom.push({id:'custom-'+Date.now()+'-'+Math.random().toString(36).slice(2,6),name,day,group,sets,reps,rpe,unit,location});settingsSave();$('customName').value='';renderSettings();toast('Exercise added')};
+$('customList').addEventListener('click',ev=>{const b=ev.target.closest('[data-remove-custom]');if(!b||!confirm('Remove custom exercise from the plan? Your logged entries will remain.'))return;config.custom=config.custom.filter(x=>x.id!==b.dataset.removeCustom);settingsSave();renderSettings()});$('exportData').onclick=exportData;$('importFile').onchange=async ev=>{const file=ev.target.files?.[0];if(!file)return;try{await importData(file)}catch(e){alert('Import failed: '+e.message)}finally{ev.target.value=''}};
+go('train');
+</script></body></html>
